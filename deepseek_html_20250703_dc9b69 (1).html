@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IPTV Premium UK Streaming</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --neon-blue: #00f3ff;
+            --neon-pink: #ff00e4;
+            --neon-green: #00ff9d;
+            --neon-purple: #9d00ff;
+            --neon-yellow: #ffee00;
+            --dark-bg: #0a0a14;
+            --darker-bg: #05050c;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background: var(--dark-bg);
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        /* **Neon Background Animation** */
+        .neon-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: radial-gradient(circle at 20% 30%, rgba(0, 243, 255, 0.1) 0%, transparent 25%),
+                        radial-gradient(circle at 80% 70%, rgba(255, 0, 228, 0.1) 0%, transparent 25%);
+            animation: pulse 12s infinite alternate;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 0.3; }
+            50% { opacity: 0.7; }
+            100% { opacity: 0.3; }
+        }
+
+        /* **Floating Neon Circles** */
+        .floating-circle {
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(70px);
+            z-index: -1;
+            animation: float 15s infinite ease-in-out;
+        }
+
+        .circle-1 {
+            width: 300px;
+            height: 300px;
+            background: var(--neon-blue);
+            top: 20%;
+            left: 10%;
+        }
+
+        .circle-2 {
+            width: 400px;
+            height: 400px;
+            background: var(--neon-pink);
+            bottom: 10%;
+            right: 10%;
+            animation-delay: 3s;
+        }
+
+        .circle-3 {
+            width: 250px;
+            height: 250px;
+            background: var(--neon-purple);
+            top: 60%;
+            left: 50%;
+            animation-delay: 6s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(50px, 50px); }
+        }
+
+        /* **Header & Logo** */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 5%;
+            background: rgba(10, 10, 20, 0.8);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0, 243, 255, 0.2);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 900;
+            font-size: 2rem;
+            color: var(--neon-blue);
+            text-shadow: 0 0 10px var(--neon-blue);
+            letter-spacing: 2px;
+        }
+
+        .logo i {
+            margin-right: 10px;
+            font-size: 2.2rem;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: 0.3s;
+            position: relative;
+        }
+
+        nav ul li a:hover {
+            color: var(--neon-pink);
+        }
+
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--neon-blue), var(--neon-pink));
+            transition: 0.3s;
+        }
+
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+
+        /* **Hero Section** */
+        .hero {
+            min-height: 80vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 5%;
+            position: relative;
+        }
+
+        .hero h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 4rem;
+            margin-bottom: 20px;
+            background: linear-gradient(90deg, var(--neon-blue), var(--neon-pink));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 0 20px rgba(0, 243, 255, 0.3);
+            letter-spacing: 3px;
+            animation: glow 2s infinite alternate;
+        }
+
+        @keyframes glow {
+            0% { text-shadow: 0 0 10px rgba(0, 243, 255, 0.3); }
+            100% { text-shadow: 0 0 20px rgba(0, 243, 255, 0.6), 0 0 30px rgba(255, 0, 228, 0.4); }
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin-bottom: 30px;
+            line-height: 1.6;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 15px 30px;
+            background: linear-gradient(45deg, var(--neon-blue), var(--neon-pink));
+            color: #fff;
+            border: none;
+            border-radius: 50px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 1.1rem;
+            text-decoration: none;
+            cursor: pointer;
+            transition: 0.3s;
+            box-shadow: 0 0 20px rgba(0, 243, 255, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0 30px rgba(0, 243, 255, 0.5);
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: 0.5s;
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        /* **Services Section** */
+        .services {
+            padding: 100px 5%;
+            background: var(--darker-bg);
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.5rem;
+            color: var(--neon-green);
+            text-shadow: 0 0 10px var(--neon-green);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--neon-green), transparent);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background: rgba(15, 15, 26, 0.7);
+            border-radius: 15px;
+            overflow: hidden;
+            transition: 0.5s;
+            border: 1px solid rgba(0, 243, 255, 0.1);
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+            opacity: 0;
+            transform: translateY(50px);
+        }
+
+        .service-card.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px) !important;
+            border: 1px solid var(--neon-blue);
+            box-shadow: 0 10px 30px rgba(0, 243, 255, 0.2);
+        }
+
+        .service-img {
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .service-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: 0.5s;
+        }
+
+        .service-card:hover .service-img img {
+            transform: scale(1.1);
+        }
+
+        .service-content {
+            padding: 25px;
+        }
+
+        .service-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            color: var(--neon-pink);
+            text-shadow: 0 0 5px var(--neon-pink);
+        }
+
+        .service-price {
+            font-size: 2.5rem;
+            margin: 20px 0;
+            color: var(--neon-yellow);
+            text-shadow: 0 0 10px var(--neon-yellow);
+            font-weight: bold;
+        }
+
+        .service-desc {
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        /* **Why Choose Us Section** */
+        .why-us {
+            padding: 100px 5%;
+            background: var(--dark-bg);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .feature-card {
+            background: rgba(15, 15, 26, 0.7);
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            transition: 0.5s;
+            border: 1px solid rgba(157, 0, 255, 0.1);
+            opacity: 0;
+            transform: translateY(50px);
+        }
+
+        .feature-card.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px) !important;
+            border: 1px solid var(--neon-purple);
+            box-shadow: 0 10px 30px rgba(157, 0, 255, 0.2);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: var(--neon-purple);
+            text-shadow: 0 0 10px var(--neon-purple);
+        }
+
+        .feature-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: #fff;
+        }
+
+        .feature-desc {
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.6;
+        }
+
+        /* **Contact Section** */
+        .contact {
+            padding: 100px 5%;
+            background: var(--darker-bg);
+            text-align: center;
+        }
+
+        .contact-methods {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 50px;
+            flex-wrap: wrap;
+        }
+
+        .contact-card {
+            background: rgba(15, 15, 26, 0.7);
+            border-radius: 15px;
+            padding: 30px;
+            width: 300px;
+            transition: 0.5s;
+            border: 1px solid rgba(157, 0, 255, 0.1);
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .contact-card:hover {
+            transform: translateY(-10px);
+            border: 1px solid var(--neon-purple);
+            box-shadow: 0 10px 30px rgba(157, 0, 255, 0.2);
+        }
+
+        .contact-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: var(--neon-purple);
+            text-shadow: 0 0 10px var(--neon-purple);
+        }
+
+        .contact-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: #fff;
+        }
+
+        .contact-info {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 1.1rem;
+            word-break: break-all;
+        }
+
+        /* **Footer** */
+        footer {
+            text-align: center;
+            padding: 30px 5%;
+            background: var(--darker-bg);
+            border-top: 1px solid rgba(0, 243, 255, 0.1);
+        }
+
+        .footer-logo {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2rem;
+            color: var(--neon-blue);
+            margin-bottom: 20px;
+            text-shadow: 0 0 10px var(--neon-blue);
+        }
+
+        .copyright {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.9rem;
+        }
+
+        /* **3D Text Effect** */
+        .text-3d {
+            text-shadow: 
+                1px 1px 0 #ccc,
+                2px 2px 0 #999,
+                3px 3px 0 #666,
+                4px 4px 0 #333,
+                5px 5px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        /* **Responsive Design** */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                padding: 20px;
+            }
+
+            .logo {
+                margin-bottom: 20px;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .services-grid, .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-methods {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- **Neon Background Elements** -->
+    <div class="neon-bg"></div>
+    <div class="floating-circle circle-1"></div>
+    <div class="floating-circle circle-2"></div>
+    <div class="floating-circle circle-3"></div>
+
+    <!-- **Header** -->
+    <header>
+        <div class="logo">
+            <i class="fas fa-tv"></i>
+            <span>IPTV</span>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#why-us">Why Us?</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- **Hero Section** -->
+    <section class="hero" id="home">
+        <h1 class="text-3d">PREMIUM UK STREAMING</h1>
+        <p>Experience the best IPTV service with 10,000+ channels, 4K quality, and 24/7 support.</p>
+        <a href="#services" class="btn">View Packages</a>
+    </section>
+
+    <!-- **Services Section** -->
+    <section class="services" id="services">
+        <h2 class="section-title">OUR PACKAGES</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-img">
+                    <img src="https://images.unsplash.com/photo-1598899134739-24c46f58b8c0?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Basic IPTV Package">
+                </div>
+                <div class="service-content">
+                    <h3 class="service-title">BASIC</h3>
+                    <p class="service-desc">1,000+ channels, HD quality, and 24/7 customer support.</p>
+                    <div class="service-price">€30/month</div>
+                    <a href="#contact" class="btn">Get Started</a>
+                </div>
+            </div>
+
+            <div class="service-card">
+                <div class="service-img">
+                    <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Premium IPTV Package">
+                </div>
+                <div class="service-content">
+                    <h3 class="service-title">PREMIUM</h3>
+                    <p class="service-desc">5,000+ channels, 4K sports, movies, and VOD.</p>
+                    <div class="service-price">€50/month</div>
+                    <a href="#contact" class="btn">Get Started</a>
+                </div>
+            </div>
+
+            <div class="service-card">
+                <div class="service-img">
+                    <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Ultimate IPTV Package">
+                </div>
+                <div class="service-content">
+                    <h3 class="service-title">ULTIMATE</h3>
+                    <p class="service-desc">10,000+ channels, 4K, adult, PPV, and exclusive content.</p>
+                    <div class="service-price">€90/month</div>
+                    <a href="#contact" class="btn">Get Started</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- **Why Choose Us Section** -->
+    <section class="why-us" id="why-us">
+        <h2 class="section-title">WHY CHOOSE US?</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-bolt"></i>
+                </div>
+                <h3 class="feature-title">ULTRA-FAST STREAMING</h3>
+                <p class="feature-desc">Buffering-free experience with 99.9% uptime and low latency.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-film"></i>
+                </div>
+                <h3 class="feature-title">50,000+ VOD TITLES</h3>
+                <p class="feature-desc">Massive library of movies, series, and documentaries.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-headset"></i>
+                </div>
+                <h3 class="feature-title">24/7 SUPPORT</h3>
+                <p class="feature-desc">Dedicated team ready to assist you anytime.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <h3 class="feature-title">SECURE & RELIABLE</h3>
+                <p class="feature-desc">Encrypted streams with no ISP throttling.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-tv"></i>
+                </div>
+                <h3 class="feature-title">MULTI-DEVICE</h3>
+                <p class="feature-desc">Works on Smart TVs, phones, tablets, and PCs.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-money-bill-wave"></i>
+                </div>
+                <h3 class="feature-title">NO HIDDEN FEES</h3>
+                <p class="feature-desc">Transparent pricing with no contracts.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- **Contact Section** -->
+    <section class="contact" id="contact">
+        <h2 class="section-title">CONTACT US</h2>
+        <div class="contact-methods">
+            <div class="contact-card">
+                <div class="contact-icon">
+                    <i class="fab fa-whatsapp"></i>
+                </div>
+                <h3 class="contact-title">WhatsApp</h3>
+                <p class="contact-info">+44 7869 845532</p>
+            </div>
+
+            <div class="contact-card">
+                <div class="contact-icon">
+                    <i class="fas fa-envelope"></i>
+                </div>
+                <h3 class="contact-title">Email</h3>
+                <p class="contact-info">heerypotal65@gmail.com</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- **Footer** -->
+    <footer>
+        <div class="footer-logo">IPTV UK</div>
+        <p class="copyright">© 2023 IPTV Premium UK Streaming. All rights reserved.</p>
+    </footer>
+
+    <!-- **JavaScript for Animations** -->
+    <script>
+        // Animate cards on scroll
+        const animateOnScroll = () => {
+            const cards = document.querySelectorAll('.service-card, .feature-card');
+            const triggerBottom = window.innerHeight / 5 * 4;
+
+            cards.forEach((card, index) => {
+                const cardTop = card.getBoundingClientRect().top;
+
+                if (cardTop < triggerBottom) {
+                    setTimeout(() => {
+                        card.classList.add('active');
+                    }, index * 200);
+                }
+            });
+        };
+
+        // Run on load and scroll
+        window.addEventListener('load', animateOnScroll);
+        window.addEventListener('scroll', animateOnScroll);
+
+        // Smooth scrolling for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
